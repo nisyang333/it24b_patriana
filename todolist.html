@@ -7,10 +7,7 @@
 </head>
 <body>
     <h1>To-Do List</h1>
-    <input type="text" 
-            id="taskInput"
-             placeholder="Add a new task...">
-             />
+    <input type="text" id="taskInput" placeholder="Add a new task..."/>
     <button onclick="addTask()">Add Task</button>
 
     <ul id="tasklist"> Task goes here </ul>ul>
@@ -31,8 +28,7 @@
         const input = document.getElementById("taskInput");
         const value = input.value.trim();
         console.log("getTaskText() called ->",value);
-        return value;
-
+        return value;  
     }
         
         function addTaskItem(taskItem){
@@ -41,9 +37,26 @@
 
             document.getElementById("tasklist").appendChild(li);
             console.log("addTaskItem() called ->".taskText,Date());
+
+        const deleteBtn = createDeleteButton(li);
+        li.appendChild(deleteBtn);
         }
         
+        function createDeleteButton(li){
+            const deleteBtn = document.createElement("button");
+            deleteBtn.textContent = "X";
+            deleteBtn.classname = "delete-btn";
+            deleteBtn.style.marginLeft = "8px";
+            deleteBtn.onclick = () => handleDeleteClick(li);
+
+            console.log("createDeleteButton() called ->", li.textContent);
+            return deleteBtn;
+        }
+
+        function handleDeleteButtonClick(li){
+            console,log("handleDeleteButtonClick() called ->", li.textContent.replace("X", "").trim(),Date());
+            li.remove();
+        }
     </script>
-   
-</body>
-</html>
+    </body>
+    </html>
