@@ -7,10 +7,8 @@
 </head>
 <body>
     <h1>To-Do List</h1>
-    <input type="text" 
-              id="taskInput" 
-              placeholder="Add a task...">
-              />
+    <input type="text"  id="taskInput" placeholder="Add a new task...">/>"
+              
     <button onclick="addTask()">Add</button>
 
     <ul id="tasklist">Task goes here </ul>
@@ -35,7 +33,7 @@
     }
         
         function addTaskItem(taskItem){
-            const li = document.createElement(li);
+            const li = document.createElement("li");
             li.textContent = taskText;
 
             document.getElementById("tasklist").appendChild(li);
@@ -43,6 +41,11 @@
 
         const deleteBtn = createDeleteButton(li);
         li.appendChild(deleteBtn);
+
+        const taskSpan = document.createElement("Span");
+        taskSpan.textContent = taskText;
+        const editBtn = createEditButton(li,taskSpan);
+        li.appendChild(editBtn);
         }
         
         function createDeleteButton(li){
@@ -59,6 +62,30 @@
         function handleDeleteButtonClick(li){
             console,log("handleDeleteButtonClick() called ->", li.textContent.replace("X", "").trim(),Date());
             li.remove();
+        }
+
+        function createEditButton(li,taskSpan){
+            const editBtn = document.createElement("button");
+            editBtn.textContent = "Edit";
+            editBtn.className = "edit-btn";
+            editBtn.style.marginLeft = "8px";
+            editBtn.onclivk = () => handleEditClick(li);
+
+            console.log("createEditButton() called =>;", taskSpan.text.Content);
+            return editBtn;
+        }
+
+        function handleEditClick(li){
+            const currentText = li.firstChild.textContent.trim();
+            console.log("handleEditClick() -> current:", currentText, date());
+
+            const newText = promp("Edit your task", currentText);
+            if(newText !== null && newText.trim !==""){
+                li.firstChild.textContent = newText,trim();
+                console.log("handleEditClick() -> updated to: ", newText.trim(), Date());
+            }else{
+                console.log("handleEditClick -> no changes made");
+            }
         }
     </script>
     </body>
