@@ -24,19 +24,23 @@
         <h1>Maps</h1>   
         <div id="map"></div>
 
-        
-        
+    </body>
 
-        </body>
-        </script>
+    <script>
+        // Initialize the map and set its view to our chosen geographical coordinates and a zoom level:
+        var map = L.map('map').setView([8.360813802887199, 124.86831416140997], 13);
 
-        var map = L.map('map').setView([8.360456764499583, 124.86854421831296], 17);    
-
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        // Set up the OSM layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
 
 
+
+        
     </script>
-        </html>
+    </html>
+        
+
+       
