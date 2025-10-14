@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        .done{
+            text-decoration: line-through;
+            color: gray;
+        }
+        </style>
+</head>
+<body>
+    <h1>To-Do List</h1>
+    <input type="text" 
+     id="taskInput" 
+     placeholder="Add a new task..."
+     
+     />
+    <button onclick="addTask()">Add Task</button>
+    <ul id="tasklist"> Your task goes here </ul>
+
+<script> 
+
+    function addTask(){
+        const taskText =getTaskText();
+
+        if (taskText){
+            addTaskItem(taskText);
+        } else {
+            console.log ("No task entered");
+        }
+    }
+
+    function getTaskText(){
+        const input = document.getElementById('taskInput');
+        const text = input.value.trim();
+
+        console.log("getTaskText() called: "+ input.value);
+        return text;  
+    }
+        
+        function addTaskItem(taskItem){
+            const li = document.createElement("li");
+            li.textContent = taskText;
+
+            document.getElementById("tasklist").appendChild(li);
+            console.log("addTaskItem() called ->:".taskText,Date());
+
+        const deleteBtn = createDeleteButton(li);
+        li.appendChild(deleteBtn);
+
+        const taskSpan = document.createElement("span");
+        taskSpan.textContent = taskText;
+        const editBtn = createEditButton(li,taskSpan);
+        li.appendChild(editBtn);
+
+        const doneBtn= createDoneButton(taskSpan);
+        li.appendChild(doneBtn);
+     
+        }
+        
+        function createDeleteButton(li){
+            const deleteBtn = document.createElement("button");
+
+            deleteBtn.textContent = "X";
+            deleteBtn.classname = "delete-btn";
+            deleteBtn.style.marginLeft = "8px";
+            deleteBtn.onclick = () => handleDeleteClick(li);
+
+            console.log("createDeleteButton() called ->", li.textContent);
+            return deleteBtn;
+        }
+
+        function handleDeleteButtonClick(li){
+            console,log("handleDeleteButtonClick() called ->", li.textContent.replace("X", "").trim(),Date());
+            li.remove();
+        }
+
+        function createEditButton(li,taskSpan){
+            const editBtn = document.createElement("button");
+            editBtn.textContent = "Edit";
+            editBtn.className = "edit-btn";
+            editBtn.style.marginLeft = "8px";
+            editBtn.onclivk = () => handleEditClick(li);
+
+            console.log("createEditButton() called =>;", taskSpan.text.Content);
+            return editBtn;
+        }
+
+        function handleEditClick(li){
+            const currentText = li.firstChild.textContent.trim();
+            console.log("handleEditClick() -> current:", currentText, date());
+
+            const newText = promp("Edit your task", currentText);
+            if(newText !== null && newText.trim !==""){
+                li.firstChild.textContent = newText,trim();
+                console.log("handleEditClick() -> updated to: ", newText.trim(), Date());
+            }else{
+                console.log("handleEditClick -> no changes made");
+            }
+        }
+
+        function createDoneButton(taskSpan){
+            const doneBtn = document.createElement("button");
+            doneBtn.textContent = "Done";
+            doneBtn.onclick = () => {
+                const li = taskSpan.parentElement;
+                console.log(li);
+
+                li.classlist.add("done");
+
+                const buttons = li.querySelectorAll('button');
+                
+                buttons.forEach(btn =>{
+                    btn.disabled = true;
+                });
+
+                console.log("Task Completed:", taskSpan.textContent), Date();
+
+            }
+            return doneBtn;
+        }
+    </script>
+    </body>
+    </html>
