@@ -2,8 +2,12 @@
 
     { 
         "name" : "ICS Laboratory 1",
+        "title" : "ICS Lab 1",
+        "description" : "This is the ICS Laboratory 1 , yipes",
+        "img":"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.bbc.co.uk%2Fnews%2Farticles%2Fcly1xvyyky7o&psig=AOvVaw29BvwwfDXfO7SoDuvWFXdl&ust=1761110510123000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCNiJv4bGtJADFQAAAAAdAAAAABAE",
+
         "lat" : 8.3593,
-        "lng" : 124.6433,
-        "description" : "This is the ICS Laboratory 1 , yipes"
+        "lng" : 124.8691 
+       
     }
 ]
