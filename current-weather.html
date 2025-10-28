@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF=8">
+    <meta name="viewport" content=""width=device-width. initial-scale="1.0">
+    <title>Document</title> 
+</head>
+<body>
+    <h1>Current-Weather</h1>
+    <button onclick="getWeather()">Get Current Weather</button>
+
+    </body>
+    <script>
+        const apiKey ="";
+
+        async function getWeather(){
+            console.log("Prompt opened" + Date());
+            const city = prompt("Enter a city name:");
+            console.log("Prompt closed" + Date());
+
+            if(!city){
+                alert("No city entered"+Date());
+                return;
+            }
+            //API Call
+            const url = `https://api.openweather.org/data/2.5/weather?q=${city}&appid${apikey}&unis=metrics;
+        
+
+            try{
+            const response = await fetch(url);
+            if(!response.ok) throw new Error("City not found");
+
+            const data = await response.json();
+
+            const weatherResult = document.getElementById("weatherResult");
+            weatherResult.innerHTML=
+            <h2>${data.name},${data.sys.country}<h2>
+                <p>Temperature: ${data.main.tempt}
+            }
+        }
+        </script>
+        </html>
