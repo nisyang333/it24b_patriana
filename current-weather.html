@@ -8,10 +8,10 @@
 <body>
     <h1>Current-Weather</h1>
     <button onclick="getWeather()">Get Current Weather</button>
-
+    <div id="weatherResult"></div>
     </body>
     <script>
-        const apiKey ="";
+        const apiKey ="09d902bfb4317d1bfc2e15f3b17b8652";
 
         async function getWeather(){
             console.log("Prompt opened" + Date());
@@ -23,7 +23,7 @@
                 return;
             }
             //API Call
-            const url = `https://api.openweather.org/data/2.5/weather?q=${city}&appid${apikey}&unis=metrics;
+            const url = `https://api.openweather.org/data/2.5/weather?q=${city}&appid=${apikey}&units=metric`;
         
 
             try{
@@ -33,9 +33,15 @@
             const data = await response.json();
 
             const weatherResult = document.getElementById("weatherResult");
-            weatherResult.innerHTML=
+            weatherResult.innerHTML=`
             <h2>${data.name},${data.sys.country}<h2>
-                <p>Temperature: ${data.main.tempt}
+                <p>Temperature: ${data.main.tempt} </p>
+                <p>Weather: ${data.weather[0].description}</p>
+                <p>Humidity: ${data.mai.humidity} %</p>
+                <p>Wind Speed: ${data.wind.speed} m/s</p>
+                `;
+            }catch(error){
+                console.log("Error " + error.message);
             }
         }
         </script>
